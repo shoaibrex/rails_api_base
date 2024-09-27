@@ -9,14 +9,21 @@ default: &default
 
 development:
   <<: *default
-  database: rails_api_base_development
+  database: sample_rails_api_development
 
 test:
   <<: *default
-  database: rails_api_base_test<%= ENV['TEST_ENV_NUMBER'] %>
+  database: sample_rails_api_test<%= ENV['TEST_ENV_NUMBER'] %>
 
 # For production is recommended to set DATABASE_URL env variable.
 # It will take precedence over the config defined here.
 # https://edgeguides.rubyonrails.org/configuring.html#connection-preference
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  database: sample_rails_api_prod
+  username: postgres
+  password: ruby3.3.5&rails7
+  host: rails-api-db.cziioq000tsw.us-east-1.rds.amazonaws.com
+  port: 5432
+  pool: 5
