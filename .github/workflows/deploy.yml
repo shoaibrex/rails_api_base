@@ -45,7 +45,7 @@ jobs:
       run: |
         bundle exec rake db:create RAILS_ENV=test
         bundle exec rake db:migrate RAILS_ENV=test
-        bundle exec rspec
+        HEADLESS=true bundle exec rspec
 
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
