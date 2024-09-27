@@ -25,9 +25,9 @@ jobs:
 
     - name: Run Tests
       run: |
-        bundle exec rake db:create RAILS_ENV=test
-        bundle exec rake db:migrate RAILS_ENV=test
-        RAILS_ENV=test bundle exec rspec 
+        bundle exec rake db:create --with test
+        bundle exec rake db:migrate --with test
+        bundle exec rspec --with test
 
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
@@ -36,7 +36,7 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          cd /path/to/your/app
+          cd /home/ubuntu/myapp/current
           git pull origin main
           bundle install
           yarn install
