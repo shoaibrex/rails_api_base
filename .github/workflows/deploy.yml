@@ -25,9 +25,10 @@ jobs:
 
     - name: Run Tests
       run: |
-        bundle exec rake db:create --with test
-        bundle exec rake db:migrate --with test
-        bundle exec rspec --with test
+        bundle config set --local with 'development'
+        bundle exec rake db:create RAILS_ENV=test
+        bundle exec rake db:migrate RAILS_ENV=test
+        bundle exec rspec RAILS_ENV=test
 
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
