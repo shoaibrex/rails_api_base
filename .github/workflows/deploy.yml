@@ -34,7 +34,7 @@ jobs:
         ruby-version: '3.3.5'
 
     - name: Install PostgreSQL Client
-        run: sudo apt-get install -y postgresql-client
+      run: sudo apt-get install -y postgresql-client
 
     - name: Install Dependencies
       run: |
