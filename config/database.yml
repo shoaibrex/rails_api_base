@@ -12,8 +12,14 @@ development:
   database: sample_rails_api_development
 
 test:
-  <<: *default
-  database: sample_rails_api_test<%= ENV['TEST_ENV_NUMBER'] %>
+  adapter: postgresql
+  encoding: unicode
+  database: my_test_db
+  username: postgres
+  password: postgres
+  host: 127.0.0.1
+  port: 5432
+  pool: 5
 
 # For production is recommended to set DATABASE_URL env variable.
 # It will take precedence over the config defined here.
