@@ -27,7 +27,7 @@ jobs:
       run: |
         bundle exec rake db:create RAILS_ENV=test
         bundle exec rake db:migrate RAILS_ENV=test
-        HEADLESS=true bundle exec parallel_rspec -n $PARALLEL_TESTS_CONCURRENCY -e './bin/parallel_tests'
+        HEADLESS=true bundle exec parallel_rspec -n $PARALLEL_TESTS_CONCURRENCY -e './bin/parallel_tests' RAILS_ENV=test
 
     - name: Deploy to EC2
       uses: appleboy/ssh-action@master
